@@ -33,27 +33,6 @@ function BrandChip({
   );
 }
 
-function Track({
-  reverse = false,
-}: {
-  reverse?: boolean;
-}) {
-  const items = [...BRANDS, ...BRANDS];
-  return (
-    <div className="flex w-max pause-on-hover">
-      <div
-        className={`flex gap-4 pr-4 ${
-          reverse ? "animate-marquee [animation-direction:reverse]" : "animate-marquee"
-        }`}
-      >
-        {items.map((brand, i) => (
-          <BrandChip key={`${brand.name}-${i}`} {...brand} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export function LogoMarquee() {
   return (
     <section className="border-y border-[rgb(var(--border))] bg-[rgb(var(--surface))]/40 py-10">
@@ -62,9 +41,12 @@ export function LogoMarquee() {
           Trabajamos con las plataformas CRM líderes del mundo
         </p>
       </div>
-      <div className="mask-fade-x mt-8 flex flex-col gap-4 overflow-hidden">
-        <Track />
-        <Track reverse />
+      <div className="mask-fade-x mt-8 overflow-hidden pause-on-hover">
+        <div className="flex w-max animate-marquee gap-4 pr-4">
+          {[...BRANDS, ...BRANDS].map((brand, i) => (
+            <BrandChip key={`${brand.name}-${i}`} {...brand} />
+          ))}
+        </div>
       </div>
     </section>
   );
