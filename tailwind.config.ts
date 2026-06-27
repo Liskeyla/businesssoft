@@ -53,11 +53,36 @@ const config: Config = {
         shimmer: {
           "100%": { transform: "translateX(100%)" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        aurora: {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "33%": { transform: "translate(30px, -40px) scale(1.1)" },
+          "66%": { transform: "translate(-20px, 30px) scale(0.95)" },
+        },
+        spin: {
+          to: { transform: "rotate(360deg)" },
+        },
+        "spin-reverse": {
+          to: { transform: "rotate(-360deg)" },
+        },
+        "pulse-ring": {
+          "0%": { transform: "scale(0.8)", opacity: "0.5" },
+          "100%": { transform: "scale(2)", opacity: "0" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.6s ease-out forwards",
         float: "float 6s ease-in-out infinite",
         shimmer: "shimmer 1.6s infinite",
+        marquee: "marquee 32s linear infinite",
+        "marquee-fast": "marquee 22s linear infinite",
+        aurora: "aurora 14s ease-in-out infinite",
+        "spin-slow": "spin 26s linear infinite",
+        "spin-slow-reverse": "spin-reverse 26s linear infinite",
+        "pulse-ring": "pulse-ring 2.5s ease-out infinite",
       },
     },
   },

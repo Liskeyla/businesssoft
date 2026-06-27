@@ -28,10 +28,11 @@ export function Hero() {
       ref={ref}
       className="relative flex min-h-screen items-center overflow-hidden pt-24 pb-16 md:pt-28"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10">
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-grid-light bg-[size:48px_48px] opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)] dark:opacity-20" />
-        <div className="absolute -left-24 top-10 h-96 w-96 rounded-full bg-brand/20 blur-[120px] dark:bg-brand/30" />
-        <div className="absolute -right-24 bottom-0 h-96 w-96 rounded-full bg-brand-light/20 blur-[120px] dark:bg-brand-light/20" />
+        <div className="absolute -left-24 top-10 h-96 w-96 animate-aurora rounded-full bg-brand/25 blur-[120px] dark:bg-brand/30" />
+        <div className="absolute -right-24 bottom-0 h-96 w-96 animate-aurora rounded-full bg-brand-light/25 blur-[120px] [animation-delay:-5s] dark:bg-brand-light/20" />
+        <div className="absolute left-1/3 top-1/3 h-72 w-72 animate-aurora rounded-full bg-sky-400/15 blur-[110px] [animation-delay:-9s]" />
       </div>
 
       <div className="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
@@ -52,7 +53,9 @@ export function Hero() {
             className="text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.4rem]"
           >
             Transformamos la gestión comercial con{" "}
-            <span className="heading-gradient">soluciones CRM inteligentes</span>
+            <span className="text-gradient-animated">
+              soluciones CRM inteligentes
+            </span>
           </motion.h1>
 
           <motion.p

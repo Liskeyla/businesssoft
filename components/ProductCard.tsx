@@ -13,12 +13,26 @@ interface ProductCardProps {
 export function ProductCard({ product, onMoreInfo }: ProductCardProps) {
   const initials = product.shortName.slice(0, 2).toUpperCase();
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    e.currentTarget.style.setProperty("--my", `${e.clientY - rect.top}px`);
+  };
+
   return (
     <motion.article
       variants={fadeUp}
       whileHover={{ y: -6 }}
-      className="card group relative flex h-full flex-col hover:shadow-soft-lg"
+      onMouseMove={handleMouseMove}
+      className="card card-glow group relative flex h-full flex-col hover:shadow-soft-lg"
     >
+      <span
+        className="absolute inset-x-0 top-0 h-1 rounded-t-2xl opacity-70 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background: `linear-gradient(90deg, ${product.accent}, transparent)`,
+        }}
+        aria-hidden="true"
+      />
       {product.featured && (
         <span className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-brand px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-white">
           <Star className="h-3 w-3 fill-current" /> Destacado
