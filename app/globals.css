@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 8 44 90;
+    --muted: 100 116 139;
+    --surface: 248 250 252;
+    --border: 226 232 240;
+  }
+
+  .dark {
+    --background: 6 17 34;
+    --foreground: 226 240 255;
+    --muted: 148 163 184;
+    --surface: 12 26 48;
+    --border: 30 49 80;
+  }
+
+  * {
+    @apply border-[rgb(var(--border))];
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  ::selection {
+    background-color: rgba(56, 189, 248, 0.3);
+    color: rgb(var(--foreground));
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .text-muted {
+    color: rgb(var(--muted));
+  }
+
+  .surface {
+    background-color: rgb(var(--surface));
+  }
+
+  .heading-gradient {
+    @apply bg-gradient-to-r from-brand via-brand-500 to-brand-light bg-clip-text text-transparent;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-light focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--background))] disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand text-white shadow-soft hover:bg-brand-dark hover:shadow-soft-lg hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply btn border border-brand/20 bg-white/80 text-brand backdrop-blur hover:border-brand/40 hover:bg-white dark:bg-white/5 dark:text-brand-light dark:hover:bg-white/10;
+  }
+
+  .btn-ghost {
+    @apply btn text-brand hover:bg-brand/5 dark:text-brand-light dark:hover:bg-white/5;
+  }
+
+  .card {
+    @apply rounded-2xl border bg-[rgb(var(--surface))] p-6 shadow-soft transition-all duration-300;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-brand/15 bg-brand/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand dark:border-brand-light/20 dark:bg-brand-light/10 dark:text-brand-light;
+  }
+}
+
+@layer utilities {
+  .skeleton {
+    @apply relative overflow-hidden bg-slate-200/70 dark:bg-slate-700/40;
+  }
+
+  .skeleton::after {
+    content: "";
+    @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
